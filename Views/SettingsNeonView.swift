@@ -27,21 +27,6 @@ struct SettingsNeonView: View {
                     ToggleRow(title: "Haptic Feedback", isOn: $enableHaptics)
                     ToggleRow(title: "Daily Reminders", isOn: $enableNotifications)
 
-                    HStack {
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text("One-Time Purchase")
-                                .foregroundColor(.white)
-                            Text("Own forever • $3.99")
-                                .foregroundColor(.white.opacity(0.7))
-                                .font(.caption)
-                        }
-                        Spacer()
-                        Image(systemName: "globe")
-                            .foregroundColor(.neonBlue)
-                    }
-                    .padding()
-                    .glassCard(cornerRadius: 16)
-
                     VStack(alignment: .leading, spacing: 10) {
                         Link("Privacy Policy", destination: AppInfo.privacyURL)
                         Link("Support", destination: AppInfo.supportURL)
@@ -50,7 +35,7 @@ struct SettingsNeonView: View {
                     .padding()
                     .glassCard(cornerRadius: 16)
 
-                    Text("No subscriptions. Own forever.")
+                    Text("Paid app. No subscriptions.")
                         .font(.footnote)
                         .foregroundColor(.white.opacity(0.7))
                         .padding(.top, 6)
