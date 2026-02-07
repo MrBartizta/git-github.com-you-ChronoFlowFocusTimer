@@ -1,7 +1,7 @@
 import SwiftUI
 
 @main
-struct ZenithFocusApp: App {
+struct ChronoFlowFocusTimer: App {
     @StateObject private var timerViewModel = TimerViewModel()
     @StateObject private var soundService = SoundService()
 

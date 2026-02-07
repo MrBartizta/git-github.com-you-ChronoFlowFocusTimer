@@ -16,6 +16,15 @@ struct CustomTimeView: View {
                     VStack(alignment: .leading, spacing: 6) {
                         Text("Focus Minutes")
                             .foregroundColor(.white)
+                        Slider(
+                            value: Binding(
+                                get: { Double(focusMinutes) },
+                                set: { focusMinutes = Int($0.rounded()) }
+                            ),
+                            in: 5...180,
+                            step: 5
+                        )
+                        .tint(.neonBlue)
                         Stepper(value: $focusMinutes, in: 5...180, step: 5) {
                             Text("\(focusMinutes) min")
                                 .foregroundColor(.white)
@@ -27,6 +36,15 @@ struct CustomTimeView: View {
                     VStack(alignment: .leading, spacing: 6) {
                         Text("Break Minutes")
                             .foregroundColor(.white)
+                        Slider(
+                            value: Binding(
+                                get: { Double(breakMinutes) },
+                                set: { breakMinutes = Int($0.rounded()) }
+                            ),
+                            in: 0...60,
+                            step: 5
+                        )
+                        .tint(.neonPurple)
                         Stepper(value: $breakMinutes, in: 0...60, step: 5) {
                             Text("\(breakMinutes) min")
                                 .foregroundColor(.white)

@@ -1,4 +1,4 @@
-# ChronoFlow Support Site
+# ChronoFlowFocusTimer Support Site
 
 This folder is ready for GitHub Pages.
 

@@ -1,4 +1,4 @@
-name: ChronoFlow
+name: ChronoFlowFocusTimer
 options:
   bundleIdPrefix: com.barkahnyadar
   deploymentTarget:
@@ -10,14 +10,14 @@ settings:
     MARKETING_VERSION: "1.0"
     TARGETED_DEVICE_FAMILY: "1,2"
     INFOPLIST_FILE: Info.plist
-    PRODUCT_NAME: ChronoFlow
+    PRODUCT_NAME: ChronoFlowFocusTimer
     ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
 targets:
-  ChronoFlow:
+  ChronoFlowFocusTimer:
     type: application
     platform: iOS
     sources:
-      - path: ZenithFocusApp.swift
+      - path: ChronoFlowFocusTimer.swift
       - path: Models
       - path: ViewModels
       - path: Views
@@ -28,9 +28,9 @@ targets:
       - path: Resources
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.barkahnyadar.chronoflow
+        PRODUCT_BUNDLE_IDENTIFIER: com.barkahnyadar.chronoflow.focustimer
 schemes:
-  ChronoFlow:
+  ChronoFlowFocusTimer:
     build:
       targets:
-        ChronoFlow: all
+        ChronoFlowFocusTimer: all

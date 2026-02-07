@@ -14,7 +14,7 @@ struct HeroTimerView: View {
 
                 VStack(spacing: 20) {
                     HStack {
-                        Text("CHRONOFLOW")
+                        Text("CHRONOFLOWFOCUSTIMER")
                             .font(.caption)
                             .tracking(1.8)
                             .foregroundColor(.neonBlue)

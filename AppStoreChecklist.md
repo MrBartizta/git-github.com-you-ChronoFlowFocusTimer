@@ -1,4 +1,4 @@
-# ChronoFlow App Store Checklist
+# ChronoFlowFocusTimer App Store Checklist
 
 Build & QA
 - Build and run on device (iPhone 15/15 Pro recommended)
@@ -13,7 +13,7 @@ Assets
 - 6.1" and 6.7" screenshots captured
 
 Metadata (App Store Connect)
-- App name: ChronoFlow
+- App name: ChronoFlowFocusTimer
 - Subtitle
 - Description
 - Keywords

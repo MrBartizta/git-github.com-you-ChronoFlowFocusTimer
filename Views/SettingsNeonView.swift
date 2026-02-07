@@ -18,7 +18,7 @@ struct SettingsNeonView: View {
                             .clipShape(RoundedRectangle(cornerRadius: 16))
                             .shadow(color: Color.neonBlue.opacity(0.6), radius: 12)
 
-                        Text("ChronoFlow")
+                        Text("ChronoFlowFocusTimer")
                             .font(.headline)
                             .foregroundColor(.white)
                     }

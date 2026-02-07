@@ -6,10 +6,10 @@
     <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 
     <key>CFBundleName</key>
-    <string>ChronoFlow</string>
+    <string>ChronoFlowFocusTimer</string>
 
     <key>CFBundleDisplayName</key>
-    <string>ChronoFlow</string>
+    <string>ChronoFlowFocusTimer</string>
 
     <key>CFBundleShortVersionString</key>
     <string>$(MARKETING_VERSION)</string>

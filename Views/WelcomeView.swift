@@ -18,7 +18,7 @@ struct WelcomeView: View {
                     .scaleEffect(appear ? 1.0 : 0.9)
                     .rotationEffect(.degrees(spin ? 360 : 0))
 
-                Text("ChronoFlow")
+                Text("ChronoFlowFocusTimer")
                     .font(.title2.weight(.semibold))
                     .foregroundColor(.white)
 
