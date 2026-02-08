@@ -23,6 +23,9 @@
     <key>CFBundlePackageType</key>
     <string>APPL</string>
 
+    <key>ITSAppUsesNonExemptEncryption</key>
+    <false/>
+
     <key>UIUserInterfaceStyle</key>
     <string>Dark</string>
 
