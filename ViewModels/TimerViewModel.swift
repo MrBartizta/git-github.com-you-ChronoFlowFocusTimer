@@ -1,5 +1,6 @@
 import Foundation
 import SwiftUI
+import UIKit
 
 class TimerViewModel: ObservableObject {
     @Published var selectedPreset: TimerPreset = TimerPreset.presets[0]
@@ -10,8 +11,13 @@ class TimerViewModel: ObservableObject {
     @Published var showAlmostDoneAlert = false
 
     private var timer: Timer?
+    private let hapticGenerator = UIImpactFeedbackGenerator(style: .heavy)
     private var totalTime: TimeInterval {
         TimeInterval((isBreakTime ? selectedPreset.breakMinutes : selectedPreset.focusMinutes) * 60)
+    }
+
+    var totalTimeSeconds: TimeInterval {
+        totalTime
     }
 
     var displayTime: String {
@@ -28,6 +34,7 @@ class TimerViewModel: ObservableObject {
         guard !isRunning else { return }
 
         isRunning = true
+        hapticGenerator.prepare()
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
             self?.tick()
         }
@@ -38,12 +45,16 @@ class TimerViewModel: ObservableObject {
         timer?.invalidate()
     }
 
-    func resetTimer() {
+    func resetTimer(keepRunning: Bool = false) {
         isRunning = false
         timer?.invalidate()
+        isBreakTime = false
         timeRemaining = totalTime
         progress = 0
         showAlmostDoneAlert = false
+        if keepRunning {
+            startTimer()
+        }
     }
 
     func skipBreak() {
@@ -51,19 +62,26 @@ class TimerViewModel: ObservableObject {
         resetTimer()
     }
 
+    func setProgress(_ value: Double) {
+        let clamped = max(0.0, min(1.0, value))
+        progress = clamped
+        timeRemaining = max(0, totalTime * (1.0 - clamped))
+    }
+
     private func tick() {
         guard timeRemaining > 0 else { return }
 
         timeRemaining -= 1
+        triggerCountdownHapticsIfNeeded()
         if timeRemaining <= 0 {
-            timeRemaining = 0
-            progress = 1.0
-            isRunning = false
-            timer?.invalidate()
-
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) { [weak self] in
-                self?.timerCompleted()
+            // Seamless transition between focus and break without stopping the timer.
+            if !isBreakTime {
+                SessionStore.shared.addSession(minutes: selectedPreset.focusMinutes, presetName: selectedPreset.name)
             }
+            isBreakTime.toggle()
+            timeRemaining = totalTime
+            progress = 0
+            showAlmostDoneAlert = false
             return
         }
 
@@ -74,13 +92,12 @@ class TimerViewModel: ObservableObject {
         progress = 1.0 - (timeRemaining / totalTime)
     }
 
-    private func timerCompleted() {
-        if !isBreakTime {
-            SessionStore.shared.addSession(minutes: selectedPreset.focusMinutes, presetName: selectedPreset.name)
-            isBreakTime = true
-        } else {
-            isBreakTime = false
-        }
-        resetTimer()
+    private func triggerCountdownHapticsIfNeeded() {
+        let hapticsEnabled = UserDefaults.standard.object(forKey: "enableHaptics") as? Bool ?? true
+        guard hapticsEnabled else { return }
+        guard timeRemaining > 0 && timeRemaining <= 10 else { return }
+
+        hapticGenerator.impactOccurred(intensity: 1.0)
+        hapticGenerator.prepare()
     }
 }

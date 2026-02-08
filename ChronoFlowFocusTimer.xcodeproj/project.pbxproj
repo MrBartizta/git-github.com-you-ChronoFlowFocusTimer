@@ -10,6 +10,7 @@
 		048D9F1B4D8730A8F5246078 /* HeroTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA51787E0040F1C922685C5 /* HeroTimerView.swift */; };
 		08695819A0AC371A4F28BDF6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211579DA1BB018299331C8CF /* ContentView.swift */; };
 		0A9D0C381978444794C0A7C8 /* Resources/Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08E5FF1E54074515B1B0DBBF /* Resources/Assets.xcassets */; };
+		1A1A1A1A1A1A1A1A1A1A1A06 /* Resources/grand_project-breath-of-life_60-seconds-320857.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2B2B2B2B2B2B2B2B2B2B2B06 /* Resources/grand_project-breath-of-life_60-seconds-320857.mp3 */; };
 		2D19330FEE33AC5F82ADFE3E /* TimerPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 981D610C78F114310B9C59D6 /* TimerPreset.swift */; };
 		37784576B3D061C015AA4D34 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD0AF34E3754391ED1B2481 /* AppInfo.swift */; };
 		5090C098590B7366738F9B4C /* CustomTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760DE9189CEC3FF8B9A25305 /* CustomTimeView.swift */; };
@@ -35,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		08E5FF1E54074515B1B0DBBF /* Resources/Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
+		2B2B2B2B2B2B2B2B2B2B2B06 /* Resources/grand_project-breath-of-life_60-seconds-320857.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Resources/grand_project-breath-of-life_60-seconds-320857.mp3; sourceTree = "<group>"; };
 		117CD57E956BEFFFDE4A1CC0 /* SettingsNeonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNeonView.swift; sourceTree = "<group>"; };
 		1CD0AF34E3754391ED1B2481 /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		211579DA1BB018299331C8CF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -58,7 +60,7 @@
 		E81D51F2F70DA564B06734D9 /* MinimalTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinimalTimerView.swift; sourceTree = "<group>"; };
 		F579F9F7C1BCE11F0E0428F0 /* PresetSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetSelectionView.swift; sourceTree = "<group>"; };
 		F7634BE16B5D8980959CA2BD /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
-		FE3C347120A8E9C88428F786 /* ChronoFlowFocusTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ChronoFlowFocusTimer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE3C347120A8E9C88428F786 /* ChronoFlowFocusTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChronoFlowFocusTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -97,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				08E5FF1E54074515B1B0DBBF /* Resources/Assets.xcassets */,
+				2B2B2B2B2B2B2B2B2B2B2B06 /* Resources/grand_project-breath-of-life_60-seconds-320857.mp3 */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -178,11 +181,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 2620;
-				TargetAttributes = {
-					98C99CCF9FFA0E109C54AC0F = {
-						DevelopmentTeam = G59B2KURRM;
-					};
-				};
 			};
 			buildConfigurationList = F323B4B977FB62B4F851E91D /* Build configuration list for PBXProject "ChronoFlowFocusTimer" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -208,6 +206,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A9D0C381978444794C0A7C8 /* Resources/Assets.xcassets in Resources */,
+				1A1A1A1A1A1A1A1A1A1A1A06 /* Resources/grand_project-breath-of-life_60-seconds-320857.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,12 +250,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G59B2KURRM;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.barkahnyadar.chronoflow.focustimer;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -296,8 +298,9 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = G59B2KURRM;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -323,9 +326,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G59B2KURRM;
-				PRODUCT_NAME = "ChronoFlowFocusTimer";
+				PRODUCT_NAME = ChronoFlowFocusTimer;
 				SDKROOT = iphoneos;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -369,8 +370,9 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = G59B2KURRM;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -389,9 +391,7 @@
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G59B2KURRM;
-				PRODUCT_NAME = "ChronoFlowFocusTimer";
+				PRODUCT_NAME = ChronoFlowFocusTimer;
 				SDKROOT = iphoneos;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -405,12 +405,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = G59B2KURRM;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.barkahnyadar.chronoflow.focustimer;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

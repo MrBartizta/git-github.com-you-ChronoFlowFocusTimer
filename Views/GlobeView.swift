@@ -2,11 +2,13 @@ import SwiftUI
 
 struct GlobeView: View {
     let intensity: Double
+    let isBreakTime: Bool
     @State private var pulse = false
     @State private var corePulse = false
 
     private var clamped: Double { max(0.0, min(1.0, intensity)) }
     private var ramp: Double { pow(clamped, 2.2) }
+    private var glowColor: Color { isBreakTime ? .neonPurple : .neonBlue }
 
     var body: some View {
         let glowBoost = 0.7 + ramp * 1.8
@@ -16,24 +18,24 @@ struct GlobeView: View {
         ZStack {
             // Hologram halo
             Circle()
-                .stroke(Color.neonBlue.opacity(min(1.0, ringAlpha + 0.2)), lineWidth: 2.2)
+                .stroke(glowColor.opacity(min(1.0, ringAlpha + 0.2)), lineWidth: 2.2)
                 .frame(width: pulse ? 182 : 162, height: pulse ? 182 : 162)
-                .shadow(color: Color.neonBlue.opacity(1.0), radius: pulse ? 48 : 24)
-                .shadow(color: Color.neonBlue.opacity(0.9), radius: pulse ? 78 : 34)
+                .shadow(color: glowColor.opacity(1.0), radius: pulse ? 48 : 24)
+                .shadow(color: glowColor.opacity(0.9), radius: pulse ? 78 : 34)
 
             // Globe body
             Circle()
                 .fill(LinearGradient(
-                    colors: [Color.neonBlue.opacity(0.9 + ramp * 0.6), Color.neonBlue.opacity(0.18 + ramp * 0.25)],
+                    colors: [glowColor.opacity(0.9 + ramp * 0.6), glowColor.opacity(0.18 + ramp * 0.25)],
                     startPoint: .topLeading,
                     endPoint: .bottomTrailing
                 ))
                 .overlay(
                     Circle()
-                        .stroke(Color.neonBlue.opacity(0.85 + ramp * 0.6), lineWidth: 2.0)
+                        .stroke(glowColor.opacity(0.85 + ramp * 0.6), lineWidth: 2.0)
                 )
-                .shadow(color: Color.neonBlue.opacity(min(1.0, glowBoost)), radius: pulse ? 66 : 28)
-                .shadow(color: Color.neonBlue.opacity(0.95), radius: pulse ? 102 : 50)
+                .shadow(color: glowColor.opacity(min(1.0, glowBoost)), radius: pulse ? 66 : 28)
+                .shadow(color: glowColor.opacity(0.95), radius: pulse ? 102 : 50)
                 .scaleEffect(pulse ? 1.04 : 1.0)
 
             // Scanline shimmer
@@ -66,13 +68,14 @@ struct GlobeView: View {
 
             // Glow core
             Circle()
-                .fill(Color.neonBlue.opacity(min(1.0, coreAlpha)))
+                .fill(glowColor.opacity(min(1.0, coreAlpha)))
                 .frame(width: corePulse ? 98 : 70, height: corePulse ? 98 : 70)
                 .blur(radius: corePulse ? 30 : 16)
-                .shadow(color: Color.neonBlue.opacity(1.0), radius: corePulse ? 52 : 24)
-                .shadow(color: Color.neonBlue.opacity(0.95), radius: corePulse ? 76 : 34)
+                .shadow(color: glowColor.opacity(1.0), radius: corePulse ? 52 : 24)
+                .shadow(color: glowColor.opacity(0.95), radius: corePulse ? 76 : 34)
         }
         .frame(width: 182, height: 182)
+        .animation(.easeInOut(duration: 0.6), value: isBreakTime)
         .onAppear {
             withAnimation(.easeInOut(duration: 1.8).repeatForever(autoreverses: true)) {
                 pulse = true

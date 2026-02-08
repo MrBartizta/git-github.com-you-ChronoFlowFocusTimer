@@ -23,6 +23,16 @@ final class SessionStore: ObservableObject {
         UserDefaults.standard.removeObject(forKey: storageKey)
     }
 
+    func removeSession(id: UUID) {
+        sessions.removeAll { $0.id == id }
+        save()
+    }
+
+    func removeSessions(at offsets: IndexSet) {
+        sessions.remove(atOffsets: offsets)
+        save()
+    }
+
     func sessionsForLast7Days() -> [(label: String, minutes: Int)] {
         let today = calendar.startOfDay(for: Date())
         var results: [(String, Int)] = []
